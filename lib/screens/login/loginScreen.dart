@@ -1,34 +1,80 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tenders_lk_app/screens/widgets/PrimaryButton.dart';
+import 'package:tenders_lk_app/screens/widgets/TextInput.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(35.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 180,
+                ),
                 Text(
-                  'TENDERS.LK',
+                  'Sign In',
                   style: GoogleFonts.getFont('Poppins',
                       textStyle: const TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 25,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 27,
                           color: Colors.black)),
+                ),
+                Text(
+                  'Sign in with tenders',
+                  style: GoogleFonts.getFont('Poppins',
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Colors.black)),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextInput(
+                  controller: emailController,
+                  obsecure: false,
+                  textInputType: TextInputType.emailAddress,
+                  text: 'Enter email or username',
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextInput(
+                  controller: passwordController,
+                  obsecure: true,
+                  textInputType: TextInputType.visiblePassword,
+                  text: 'Enter password',
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const PrimaryButton(),
+                const SizedBox(
+                  height: 14,
+                ),
+                Center(
+                  child: Text(
+                    'I don’t have an account',
+                    style: GoogleFonts.getFont('Poppins',
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black)),
+                  ),
                 ),
               ],
             ),
