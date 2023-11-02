@@ -4,7 +4,7 @@ sealed class LoginBlocEvent extends Equatable {
   const LoginBlocEvent();
 }
 
-class LoginButtonPressed extends LoginBlocEvent {
+abstract class LoginButtonPressed extends LoginBlocEvent {
   final String email;
   final String password;
 
