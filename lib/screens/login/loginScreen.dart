@@ -14,17 +14,15 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(35.0),
-            child: Column(
+      body: Container(
+        padding: EdgeInsets.all(35.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 180,
-                ),
                 Text(
                   'Sign In',
                   style: GoogleFonts.getFont('Poppins',
@@ -41,6 +39,11 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 12,
                           color: Colors.black)),
                 ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 const SizedBox(
                   height: 24,
                 ),
@@ -62,7 +65,11 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                const PrimaryButton(),
+                PrimaryButton(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ),
                 const SizedBox(
                   height: 14,
                 ),
@@ -78,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -37,7 +37,6 @@ class TextInput extends StatelessWidget {
                 fontSize: 14,
               ),
             )),
-        autofocus: true,
       ),
     );
   }
