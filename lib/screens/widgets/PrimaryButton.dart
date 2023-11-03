@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({super.key, this.onTap});
-  final VoidCallback? onTap;
+  const PrimaryButton({super.key, this.onPressed, required this.text});
+  final VoidCallback? onPressed;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,9 @@ class PrimaryButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: onTap,
+          onPressed: onPressed,
           child: Text(
-            'Login to tenders',
+            text,
             style: GoogleFonts.getFont('Poppins',
                 textStyle: const TextStyle(
                   color: Colors.white,

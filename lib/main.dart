@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenders_lk_app/bloc/authentication/auth_bloc.dart';
@@ -11,19 +12,25 @@ class SimpleBlocObserver extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
-    print('onEvent main');
+    if (kDebugMode) {
+      print('${bloc.runtimeType} $event');
+    }
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    print('onTransition main');
+    if (kDebugMode) {
+      print('${bloc.runtimeType} $transition');
+    }
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    print('onError main');
+    if (kDebugMode) {
+      print('${bloc.runtimeType} $stackTrace');
+    }
   }
 }
 
@@ -38,7 +45,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(userRepositories: userRepositories),
       routes: {
         '/intro': (context) => SplashScreen(userRepositories: userRepositories),
-        '/login': (context) => LoginScreen(),
+        // '/login': (context) => LoginScreen(),
         '/home': (context) => const HomeScreen(),
       },
     );

@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UserRepositories {
-  static String mainUrl = 'http://localhost/ss';
-  var loginUrl = '{$mainUrl}/api/login';
+  static String mainUrl = 'http://192.168.1.158:8000/api';
+  var loginUrl = '$mainUrl/mobile/user/login';
 
-  final FlutterSecureStorage storage = FlutterSecureStorage();
-  final Dio _dio = Dio();
+  final FlutterSecureStorage storage = const FlutterSecureStorage();
+  final Dio _dio = Dio(BaseOptions(
+    contentType: 'application/json',
+  ));
 
   Future<bool> hasToken() async {
     var value = await storage.read(key: 'token');

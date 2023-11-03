@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
+    final userRepositories = UserRepositories();
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
@@ -29,11 +30,15 @@ class _SplashScreenState extends State<SplashScreen>
           return BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
               if (state is AuthenticateUninitialized) {
-                return LoginScreen();
+                return LoginScreen(
+                  userRepositories: userRepositories,
+                );
               } else if (state is AuthenticateAuthenticated) {
                 return const HomeScreen();
               } else {
-                return LoginScreen();
+                return LoginScreen(
+                  userRepositories: userRepositories,
+                );
               }
             },
           );

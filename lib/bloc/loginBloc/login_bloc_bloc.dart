@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenders_lk_app/bloc/authentication/auth_bloc.dart';
 import 'package:tenders_lk_app/repositories/repositories.dart';
