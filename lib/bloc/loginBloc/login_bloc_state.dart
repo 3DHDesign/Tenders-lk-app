@@ -1,10 +1,11 @@
 part of 'login_bloc_bloc.dart';
 
-sealed class LoginBlocState extends Equatable {
+@immutable
+abstract class LoginBlocState extends Equatable {
   const LoginBlocState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 final class LoginInitial extends LoginBlocState {}
@@ -17,8 +18,10 @@ final class LoginFailure extends LoginBlocState {
   const LoginFailure({required this.error});
 
   @override
-  List<Object> get props => [error];
+  List<Object?> get props => [error];
 
   @override
-  String toString() => 'Loggin error {$error}';
+  String toString() {
+    return 'Loggin error {$error}';
+  }
 }

@@ -11,28 +11,19 @@ class LoginBloc extends Bloc<LoginBlocEvent, LoginBlocState> {
   final UserRepositories userRepositories;
   final AuthBloc authBloc;
 
-  LoginBloc(
-    super.initialState, {
-    @required this.userRepositories,
-    @required this.authBloc,
-  })  : assert(userRepositories != null),
-        assert(authBloc != null);
-
-  @override
-  LoginBlocState get initialState => LoginInitial();
-
-  @override
-  Stream<LoginBlocState> mapEventToState(LoginBlocEvent event) async* {
-    if (event is LoginButtonPressed) {
-      yield LoginBlocState();
-
+  LoginBloc({
+    required this.userRepositories,
+    required this.authBloc,
+  }) : super(LoginInitial()) {
+    on<LoginButtonPressed>((event, emit) async {
+      emit(LoginLoading());
       try {
         final token = await userRepositories.login(event.email, event.password);
         authBloc.add(LoggedIn(token: token));
-        yield LoginInitial();
+        emit(LoginInitial());
       } catch (error) {
-        yield LoginFailure(error: error.toString());
+        emit(LoginFailure(error: error.toString()));
       }
-    }
+    });
   }
 }

@@ -1,10 +1,11 @@
 part of 'login_bloc_bloc.dart';
 
-sealed class LoginBlocEvent extends Equatable {
+@immutable
+abstract class LoginBlocEvent extends Equatable {
   const LoginBlocEvent();
 }
 
-abstract class LoginButtonPressed extends LoginBlocEvent {
+class LoginButtonPressed extends LoginBlocEvent {
   final String email;
   final String password;
 
@@ -14,6 +15,10 @@ abstract class LoginButtonPressed extends LoginBlocEvent {
   });
 
   @override
-  String toString() =>
-      'LoginButtonPressed {email: $email, password: $password}';
+  List<Object?> get props => [email, password];
+
+  @override
+  String toString() {
+    return 'LoginButtonPressed {email: $email, password: $password}';
+  }
 }

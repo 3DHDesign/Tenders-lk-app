@@ -1,10 +1,16 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tenders_lk_app/bloc/authentication/auth_bloc.dart';
+import 'package:tenders_lk_app/repositories/repositories.dart';
+import 'package:tenders_lk_app/screens/home/HomeScreen.dart';
 import 'package:tenders_lk_app/screens/login/loginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final UserRepositories userRepositories;
+  const SplashScreen({super.key, required this.userRepositories});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -19,7 +25,19 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => LoginScreen(),
+        builder: (_) {
+          return BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              if (state is AuthenticateUninitialized) {
+                return LoginScreen();
+              } else if (state is AuthenticateAuthenticated) {
+                return const HomeScreen();
+              } else {
+                return LoginScreen();
+              }
+            },
+          );
+        },
       ));
     });
   }
