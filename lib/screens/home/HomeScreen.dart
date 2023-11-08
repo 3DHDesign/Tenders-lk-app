@@ -72,6 +72,117 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.notifications))),
         ],
       ),
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            decoration: const BoxDecoration(
+              color: Color.fromRGBO(255, 232, 219, 1),
+              borderRadius: BorderRadius.all(Radius.circular(16.0)),
+            ),
+            width: double.maxFinite,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  'Search your tender',
+                  style: GoogleFonts.getFont('Poppins',
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20)),
+                ),
+                Text(
+                  'Find your favorite tender',
+                  style: GoogleFonts.getFont('Poppins',
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12)),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                            color: Colors.white),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 15),
+                            const Icon(
+                              Iconsax.document1,
+                              color: Color.fromRGBO(239, 108, 0, 1),
+                              size: 28,
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Search Keyword',
+                                    border: InputBorder.none,
+                                    hintStyle: GoogleFonts.getFont(
+                                      'Poppins',
+                                      textStyle: const TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 14,
+                                      ),
+                                    )),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.orange.shade800,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Iconsax.filter),
+                        color: Colors.white,
+                        onPressed: () {},
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Categories',
+                  style: GoogleFonts.getFont('Poppins',
+                      textStyle: const TextStyle(
+                          fontSize: 19,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600)),
+                ),
+                Text(
+                  'View all',
+                  style: GoogleFonts.getFont('Poppins',
+                      textStyle: const TextStyle(
+                          fontSize: 15,
+                          color: Color.fromRGBO(230, 81, 0, 1),
+                          fontWeight: FontWeight.w600)),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
