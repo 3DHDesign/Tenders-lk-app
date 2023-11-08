@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:tenders_lk_app/screens/widgets/BottomNav.dart';
+import 'package:tenders_lk_app/screens/widgets/UI/CategoryCard.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -170,15 +171,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.black,
                           fontWeight: FontWeight.w600)),
                 ),
-                Text(
-                  'View all',
-                  style: GoogleFonts.getFont('Poppins',
-                      textStyle: const TextStyle(
-                          fontSize: 15,
-                          color: Color.fromRGBO(230, 81, 0, 1),
-                          fontWeight: FontWeight.w600)),
-                ),
               ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return const CategoryCard(
+                      tenderCount: 200,
+                      categoryColor: '0xDDF1FF',
+                      categoryText: 'Automobile and Transport',
+                      categoryImage: 'no_image.jpg');
+                },
+              ),
             ),
           )
         ],
