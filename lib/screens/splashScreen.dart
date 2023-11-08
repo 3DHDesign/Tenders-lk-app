@@ -7,6 +7,7 @@ import 'package:tenders_lk_app/bloc/authentication/auth_bloc.dart';
 import 'package:tenders_lk_app/repositories/repositories.dart';
 import 'package:tenders_lk_app/screens/home/HomeScreen.dart';
 import 'package:tenders_lk_app/screens/login/loginScreen.dart';
+import 'package:tenders_lk_app/screens/mainPage.dart';
 
 class SplashScreen extends StatefulWidget {
   final UserRepositories userRepositories;
@@ -34,11 +35,9 @@ class _SplashScreenState extends State<SplashScreen>
                   userRepositories: userRepositories,
                 );
               } else if (state is AuthenticateAuthenticated) {
-                return const HomeScreen();
+                return const MainPage();
               } else {
-                return LoginScreen(
-                  userRepositories: userRepositories,
-                );
+                return const MainPage();
               }
             },
           );

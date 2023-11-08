@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:tenders_lk_app/screens/widgets/BottomNav.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,8 +13,75 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final controller = Get.put(NavigationController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        toolbarHeight: 80,
+        title: Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network(
+                      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                      width: 40,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Mr. Asela Seneviratne',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text("3DH Design",
+                      style: GoogleFonts.getFont(
+                        'Poppins',
+                        textStyle: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey),
+                      )),
+                ],
+              )
+            ],
+          ),
+        ),
+        actions: [
+          Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: IconButton(
+                  color: Colors.orange.shade900,
+                  iconSize: 30,
+                  onPressed: () => Get.to(() => const BottomNav()),
+                  icon: const Icon(Icons.notifications))),
+        ],
+      ),
+    );
   }
+}
+
+class NavigationController extends GetxController {
+  final Rx<int> selectedIndex = 0.obs;
+  final screens = [
+    Container(color: Colors.orange.shade600),
+    Container(color: Colors.red.shade600),
+    Container(color: Colors.green.shade600),
+    Container(color: Colors.grey.shade600)
+  ];
 }

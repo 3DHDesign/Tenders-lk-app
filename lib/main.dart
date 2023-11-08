@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tenders_lk_app/bloc/authentication/auth_bloc.dart';
 import 'package:tenders_lk_app/repositories/repositories.dart';
 import 'package:tenders_lk_app/screens/home/HomeScreen.dart';
@@ -42,6 +43,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        useMaterial3: true,
+      ),
       home: SplashScreen(userRepositories: userRepositories),
       routes: {
         '/intro': (context) => SplashScreen(userRepositories: userRepositories),
