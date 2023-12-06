@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:tenders_lk_app/bloc/categories/categories_bloc.dart';
 import 'package:tenders_lk_app/screens/widgets/BottomNav.dart';
 import 'package:tenders_lk_app/screens/widgets/UI/CategoryCard.dart';
 
@@ -15,6 +16,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(NavigationController());
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

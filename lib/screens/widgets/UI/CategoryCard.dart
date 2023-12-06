@@ -45,12 +45,12 @@ class CategoryCard extends StatelessWidget {
                   ),
                 )),
             Positioned(
-                top: 0,
-                left: 0,
+                top: 10,
+                left: 10,
                 child: Image.asset(
-                  'images/icons/Automobile and transport.png',
-                  width: 50,
-                )),
+                    'assets/images/icons/Automobile and transport.png',
+                    width: 80,
+                    height: 80)),
             Positioned(
                 bottom: 20,
                 left: 20,
